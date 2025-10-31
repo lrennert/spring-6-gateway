@@ -6,3 +6,15 @@ spring:
           uri: http://localhost:8081
           predicates:
             - Path=/api/v1/**
+# ENABLE BELOW FOR TROUBLESHOOTING
+#      httpserver:
+#        wiretap: true
+#      httpclient:
+#        wiretap: true
+#
+#logging:
+#  level:
+#    root: error
+#    reactor.netty: trace
+#    org.springframework.cloud.gateway: trace
+#    org.springframework.http.server.reactive: trace
