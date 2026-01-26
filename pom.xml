@@ -17,6 +17,8 @@
 	<properties>
 		<java.version>24</java.version>
 		<spring-cloud.version>2025.0.0</spring-cloud.version>
+		<logbook.version>3.12.3</logbook.version>
+		<logstash-logback-encoder.version>9.0</logstash-logback-encoder.version>
 	</properties>
 
     <dependencies>
@@ -32,8 +34,23 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>org.zalando</groupId>
+            <artifactId>logbook-spring-boot-starter</artifactId>
+            <version>${logbook.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.zalando</groupId>
+            <artifactId>logbook-logstash</artifactId>
+            <version>${logbook.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash-logback-encoder.version}</version>
+        </dependency>
 
-		<dependency>
+        <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
