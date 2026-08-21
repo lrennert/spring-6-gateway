@@ -27,7 +27,12 @@ public class SpringSecurityConfig {
     @Order(2)
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         http
-                .authorizeExchange(authorizeExchangeSpec -> authorizeExchangeSpec.anyExchange().authenticated())
+                .authorizeExchange(authorizeExchangeSpec -> authorizeExchangeSpec
+                        // This matcher is necessary because the client needs to reach the token endpoint before it has an access token.
+                        // Before introducing application-docker.yml, the client was talking directly to the authorization server,
+                        // rather than going through the Gateway.
+                        .pathMatchers("/oauth2/**").permitAll()
+                        .anyExchange().authenticated())
                 .oauth2ResourceServer(oAuth2ResourceServerSpec -> oAuth2ResourceServerSpec.jwt(Customizer.withDefaults()))
                 .csrf(ServerHttpSecurity.CsrfSpec::disable);
 
